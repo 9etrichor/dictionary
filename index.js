@@ -31,9 +31,28 @@ async function fetchAPI(word){
 
 }
 
+//use the key "/" to go to search bar
+function shortCutToInput() {
+  inputEl.focus()
+}
+
+//use the key "Escape" to delete all word in search bar
+function shortCutToDeleteInput() {
+  inputEl.value = '';
+}
 
 inputEl.addEventListener("keyup", (e) => {
   if(e.target.value && e.key === "Enter") {
     fetchAPI(e.target.value);
   }
+})
+
+document.addEventListener("keyup", (e) => {
+  if(e.key === "/" ) {
+    shortCutToInput();
+  }
+  if(e.key === "Escape") {
+    shortCutToDeleteInput();
+  }
+  console.log(e.key)
 })
